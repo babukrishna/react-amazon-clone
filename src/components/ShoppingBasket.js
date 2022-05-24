@@ -1,35 +1,22 @@
 import './shoppingBasket.scss';
-import { useStateValue } from './StateProvider';
-import Rating from './Rating';
-const ShoppingBasket = () => {
-  const { myReducer } = useStateValue();
-  const [ data, dispatch ] = myReducer;
 
-  const removeFromCart = (id) => {
-    dispatch({
-      type:'REMOVE_FROM_CART',
-      payload:id
-    })
-  }
-  
+const ShoppingBasket = () => {
   return(
     <div className="shoppingBasket">
       <h2>Your Shopping Basket</h2>
       <hr/>
       <ul className='list'>
-        {
-          data.cartList.map(item=>(<li key={item.id}>
-            <div className='imageHolder'>
-              <img src={item.imageURL} alt="" />
-            </div>
-            <div className='itemDeatils'>
-              <div>{item.title}</div>
-              <p><strong>${item.price}</strong></p>
-              <div><Rating rate={item.rating}/></div>
-              <button onClick={()=>removeFromCart(item.id)}>Remove from Cart</button>
-            </div>
-          </li>))
-        }
+        <li>
+          <div className='imageHolder'>
+            <img src="https://m.media-amazon.com/images/I/71g2ednj0JL._AC_SY400_.jpg" alt="" />
+          </div>
+          <div className='itemDeatils'>
+            <div>Sint cupidatat dolor nulla velit ipsum mollit minim ullamco ullamco voluptate elit.</div>
+            <p><strong>$0:00</strong></p>
+            <div>Rating</div>
+            <button>Remove from Cart</button>
+          </div>
+        </li>
       </ul>
     </div>
   )
